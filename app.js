@@ -1,16 +1,21 @@
 
-var parentElement = document.getElementById('product1');
-var parentElementTwo = document.getElementById('product2');
-var parentElementThree = document.getElementById('product3');
+var wrapper1 = document.getElementById('product1');
+var wrapper2 = document.getElementById('product2');
+var wrapper3 = document.getElementById('product3');
+wrapper1.addEventListener('click', handleClick)
+wrapper2.addEventListener('click', handleClick)
+wrapper3.addEventListener('click', handleClick)
 
+var finalList = document.getElementById('ul')
 var productArray = [];
+var totalClicks = 0;
 
 function Product(filepath, alt, title) {
   this.filepath = filepath;
   this.alt = alt;
   this.title = title;
   this.clicks = 0;
-
+  this.shown = 0;
   productArray.push(this);
 }
 
@@ -36,60 +41,67 @@ new Product('img/water-can.jpg', 'water-can', 'water-can');
 new Product('img/wine-glass.jpg', 'wine-glass', 'wine-glass');
 
 
-function getRandomImage() {
-  var randomIndex = getRandomNumber(productArray.length);
-  var chosenImage = productArray[randomIndex];
-  var imageElement = document.createElement('img');
-  imageElement.setAttribute('src', chosenImage.filepath);
-  imageElement.setAttribute('alt', chosenImage.alt);
-  imageElement.setAttribute('title', chosenImage.title);
-  parentElement.appendChild(imageElement);
-}
 
-function getRandomImage2() {
-  var randomIndex = getRandomNumber(productArray.length);
-  var chosenImage = productArray[randomIndex];
-  var imageElement = document.createElement('img');
-  imageElement.setAttribute('src', chosenImage.filepath);
-  imageElement.setAttribute('alt', chosenImage.alt);
-  imageElement.setAttribute('title', chosenImage.title);
-  parentElementTwo.appendChild(imageElement);
-}
 
-function getRandomImage3() {
-  var randomIndex = getRandomNumber(productArray.length);
-  var chosenImage = productArray[randomIndex];
-  var imageElement = document.createElement('img');
-  imageElement.setAttribute('src', chosenImage.filepath);
-  imageElement.setAttribute('alt', chosenImage.alt);
-  imageElement.setAttribute('title', chosenImage.title);
-  parentElementThree.appendChild(imageElement);
-}
 
-function getRandomNumber(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
 
+function random() {
+  var tempArray = [];
+  tempArray[0] = randomNumber();
+  tempArray[1] = randomNumber();
+  while (tempArray[0] === tempArray[1]) {
+    tempArray[1] = randomNumber();
+  }
+  tempArray[2] = randomNumber();
+  while (tempArray[2] === tempArray[1] || tempArray[2] === tempArray[0]) {
+    tempArray[2] = randomNumber();
+  }
+
+  console.log(tempArray);
+  for (var i = 0; i < tempArray.length; i++) {
+    var temp;
+    if (i === 0) temp = wrapper1;
+    else if (i === 1) temp = wrapper2;
+    else temp = wrapper3;
+
+
+    var chooseImage = productArray[tempArray[i]];
+    chooseImage.productShown++;
+    var imageElement = document.createElement('img');
+    imageElement.setAttribute('src', chooseImage.filepath);
+    imageElement.setAttribute('alt', chooseImage.alt);
+    imageElement.setAttribute('title', chooseImage.title);
+    console.log(imageElement);
+    temp.appendChild(imageElement);
+    console.log(productArray);
+  }
+}
 
 function handleClick() {
-  console.log('an image was clicked');
+  totalClicks++;
   for (var i = 0; i < productArray.length; i++) {
     if (event.target.alt === productArray[i].alt) {
       productArray[i].click++;
+      productArray[i].shown++;
     }
   }
-
-  parentElement.innerHTML = '';
-  parentElementTwo.innerHTML = '';
-  parentElementThree.innerHTML = '';
-  getRandomImage();
-  getRandomImage2();
-  getRandomImage3();
+  wrapper1.innerHTML = '';
+  wrapper2.innerHTML = '';
+  wrapper3.innerHTML = '';
+  random();
+  if (totalClicks >= 25) {
+    wrapper1.removeEventListener('click', handleClick);
+    for (var j = 0; j < productArray.length; j++) {
+      console.log(productArray[i])
+      var li = document.createElement('li');
+      li.textContent = productArray[j].title + ' had ' + productArray[j].clicks + ' votes and was shown ' + productArray[j].shown + ' times.'
+      finalList.appendChild(li);
+    }
+  }
 }
 
-parentElement.addEventListener('click', handleClick)
-parentElementTwo.addEventListener('click', handleClick)
-parentElementThree.addEventListener('click', handleClick)
-getRandomImage();
-getRandomImage2();
-getRandomImage3();
+function randomNumber() {
+  return Math.floor(Math.random() * Math.floor(productArray.length));
+}
+
+random();

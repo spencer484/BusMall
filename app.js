@@ -1,4 +1,3 @@
-
 var wrapper1 = document.getElementById('product1');
 var wrapper2 = document.getElementById('product2');
 var wrapper3 = document.getElementById('product3');
@@ -81,7 +80,7 @@ function handleClick() {
   totalClicks++;
   for (var i = 0; i < productArray.length; i++) {
     if (event.target.alt === productArray[i].alt) {
-      productArray[i].click++;
+      productArray[i].clicks++;
       productArray[i].shown++;
     }
   }

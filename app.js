@@ -80,7 +80,7 @@ function handleClick() {
   totalClicks++;
   for (var i = 0; i < productArray.length; i++) {
     if (event.target.alt === productArray[i].alt) {
-      productArray[i].click++;
+      productArray[i].clicks++;
       productArray[i].shown++;
     }
   }
@@ -91,6 +91,7 @@ function handleClick() {
   if (totalClicks >= 25) {
     wrapper1.removeEventListener('click', handleClick);
     for (var j = 0; j < productArray.length; j++) {
+      console.log(productArray[i])
       var li = document.createElement('li');
       li.textContent = productArray[j].title + ' had ' + productArray[j].clicks + ' votes and was shown ' + productArray[j].shown + ' times.'
       finalList.appendChild(li);

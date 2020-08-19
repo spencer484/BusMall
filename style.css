@@ -36,7 +36,6 @@ img{
   vertical-align: bottom;
 }
 
-
 #product2{
   border: 1px solid #333;
   grid-column: 3/3;
@@ -58,7 +57,7 @@ img{
 
 .text-description{
   border: 1px solid #333;
-  grid-column: 2/5 ;
+  grid-column: 2/5;
 }
 
 .footer{

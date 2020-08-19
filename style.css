@@ -65,3 +65,8 @@ img{
   grid-column: 2/5;
   text-align: center;
 }
+
+#myChart{
+  width: 400px;
+  height: 400px;
+}

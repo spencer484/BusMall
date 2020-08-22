@@ -180,6 +180,7 @@ function generateChart() {
           'rgba(255, 159, 64, 1)',
           'rgba(255, 99, 132, 1)',
           'rgba(75, 192, 192, 1)',
+<<<<<<< HEAD
         ],
         borderWidth: 1
       },
@@ -229,6 +230,8 @@ function generateChart() {
           'rgba(255, 159, 64, 1)',
           'rgba(255, 99, 132, 1)',
           'rgba(75, 192, 192, 1)',
+=======
+>>>>>>> 57d82b6fc8f3427b2b15f6b424c08493a587b2fd
         ],
         borderWidth: 1
       }]

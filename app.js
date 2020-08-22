@@ -48,7 +48,6 @@ function onPageLoad() {
 }
 
 
-
 function random() {
   var tempArray = [];
   tempArray[0] = randomNumber();
@@ -67,7 +66,6 @@ function random() {
     if (i === 0) temp = wrapper1;
     else if (i === 1) temp = wrapper2;
     else temp = wrapper3;
-
 
     var chooseImage = productArray[tempArray[i]];
     chooseImage.productShown++;
@@ -118,11 +116,9 @@ function pageRefresh() {
 }
 
 
-
 function randomNumber() {
   return Math.floor(Math.random() * Math.floor(productArray.length));
 }
-
 
 function dataInArray() {
   for (var i = 0; i < productArray.length; i++) {
@@ -186,6 +182,55 @@ function generateChart() {
           'rgba(75, 192, 192, 1)',
         ],
         borderWidth: 1
+      },
+      {
+        label: '# of times Shown',
+        data: productShown,
+        backgroundColor: [
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 206, 86, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+          'rgba(153, 102, 255, 0.2)',
+          'rgba(255, 159, 64, 0.2)',
+          'rgba(255, 99, 132, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+        ],
+        borderColor: [
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 206, 86, 1)',
+          'rgba(75, 192, 192, 1)',
+          'rgba(153, 102, 255, 1)',
+          'rgba(255, 159, 64, 1)',
+          'rgba(255, 99, 132, 1)',
+          'rgba(75, 192, 192, 1)',
+        ],
+        borderWidth: 1
       }]
     },
     options: {
@@ -199,7 +244,6 @@ function generateChart() {
     }
   });
 }
-
 
 onPageLoad();
 random();
